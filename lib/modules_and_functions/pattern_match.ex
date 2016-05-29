@@ -13,7 +13,9 @@ defmodule ModulesAndFunctions.PatternMatch do
       3628800
   """
   def factorial(0), do: 1
-  def factorial(n), do: n * factorial(n - 1)
+  def factorial(n) when n > 0 do
+    n * factorial(n - 1)
+  end
 
   @doc """
   Calculates sum of integers from 1 to n
