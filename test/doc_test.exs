@@ -4,4 +4,5 @@ defmodule DocTest do
   doctest ModulesAndFunctions.PatternMatch
   # doctest ModulesAndFunctions.Chop # do not doctest, it outputs on console
   doctest ModulesAndFunctiions.EmbeddedFunctions
+  doctest Lists.MyList
 end
