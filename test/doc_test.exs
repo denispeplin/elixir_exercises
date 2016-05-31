@@ -3,4 +3,5 @@ defmodule DocTest do
   doctest ModulesAndFunctions.Times
   doctest ModulesAndFunctions.PatternMatch
   # doctest ModulesAndFunctions.Chop # do not doctest, it outputs on console
+  doctest ModulesAndFunctiions.EmbeddedFunctions
 end
