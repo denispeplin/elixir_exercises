@@ -41,4 +41,15 @@ defmodule ModulesAndFunctiions.EmbeddedFunctions do
       "elixir_exercises"
   """
   def cwd, do: System.cwd
+
+  @doc ~S"""
+  Execute given command.
+
+  ## Example
+      iex> ModulesAndFunctiions.EmbeddedFunctions.cmd("echo", ["hello"]) == {"hello\n", 0}
+      true
+  """
+  def cmd(command, args) do
+    System.cmd(command, args)
+  end
 end
