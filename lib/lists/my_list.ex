@@ -26,7 +26,7 @@ defmodule Lists.MyList do
   @doc """
   Returns max value of a list.
 
-  ## Example
+  ## Examples
       iex> Lists.MyList.max [14, 0, 33, 3, 42, 0, 11]
       42
       iex> Lists.MyList.max []
@@ -41,4 +41,16 @@ defmodule Lists.MyList do
   defp _max([head | tail], max) when head <= max, do: _max(tail, max)
   defp _max([head | tail], max) when head > max, do: _max(tail, head)
   defp _max([], max), do: max
+
+  @doc """
+  Adds number to each element of a list, wraps if result > 'z'.
+
+  ## Example
+      iex> Lists.MyList.caesar 'ryvkve', 13
+      'elixir'
+  """
+  def caesar([], _n), do: []
+  def caesar([head | tail], n), do: [_caesar(head, n) | caesar(tail, n)]
+  defp _caesar(sym, n) when sym + n > 122, do: sym + n - 122 + 96
+  defp _caesar(sym, n), do: sym + n
 end
