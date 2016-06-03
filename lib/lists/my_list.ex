@@ -53,4 +53,14 @@ defmodule Lists.MyList do
   def caesar([head | tail], n), do: [_caesar(head, n) | caesar(tail, n)]
   defp _caesar(sym, n) when sym + n > 122, do: sym + n - 122 + 96
   defp _caesar(sym, n), do: sym + n
+
+  @doc """
+  Returns list of numbers from `from` up to `to`.
+
+  ## Example
+      iex> Lists.MyList.span(5, 10)
+      [5, 6, 7, 8, 9, 10]
+  """
+  def span(to, to), do: [to]
+  def span(from, to), do: [from | span(from + 1, to)]
 end
