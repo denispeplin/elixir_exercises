@@ -65,4 +65,17 @@ defmodule Lists.MyList do
   """
   def span(to, to), do: [to]
   def span(from, to), do: [from | span(from + 1, to)]
+
+  @doc """
+  Filters list of lists by first element.
+
+  ## Example
+      iex> Lists.MyList.filter_by_first ['abc', 'zy', 'a', 'xl', 'avs'], 97
+      ['abc', 'a', 'avs']
+  """
+  def filter_by_first([], _), do: []
+  def filter_by_first([list = [filter | _] | tail], filter) do
+    [list | filter_by_first(tail, filter)]
+  end
+  def filter_by_first([_ | tail], filter), do: filter_by_first(tail, filter)
 end
