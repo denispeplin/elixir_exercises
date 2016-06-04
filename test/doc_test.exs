@@ -5,4 +5,5 @@ defmodule DocTest do
   # doctest ModulesAndFunctions.Chop # do not doctest, it outputs on console
   doctest ModulesAndFunctiions.EmbeddedFunctions
   doctest Lists.MyList
+  doctest Lists.MyEnum
 end
