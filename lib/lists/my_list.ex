@@ -60,6 +60,8 @@ defmodule Lists.MyList do
   ## Example
       iex> Lists.MyList.span(5, 10)
       [5, 6, 7, 8, 9, 10]
+      iex> Lists.MyList.span(97, 122)
+      'abcdefghijklmnopqrstuvwxyz'
   """
   def span(to, to), do: [to]
   def span(from, to), do: [from | span(from + 1, to)]
