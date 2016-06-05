@@ -34,4 +34,35 @@ defmodule Lists.MyEnum do
 
   def all?([]), do: true
   def all?([head | tail]), do: !!head && all?(tail)
+
+  @doc """
+  Invokes the given `fun` for each item in the enumerable.
+  Returns `:ok`.
+
+  ## Examples
+      Lists.MyEnum.each(["some", "example"], fn(x) -> IO.puts x end)
+      "some"
+      "example"
+      #=> :ok
+  """
+  def each([head | tail], fun) do
+    fun.(head)
+    each(tail, fun)
+  end
+
+  @doc """
+  Filters the enumerable, i.e. returns only those elements
+  for which `fun` returns a truthy value.
+
+  ## Examples
+      iex> Enum.filter([1, 2, 3], fn(x) -> rem(x, 2) == 0 end)
+      [2]
+  """
+  def filter([head | tail], fun) do
+    if fun.(head) do
+      [head | filter(tail, fun)]
+    else
+      filter(tail, fun)
+    end
+  end
 end
