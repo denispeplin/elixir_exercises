@@ -65,4 +65,42 @@ defmodule Lists.MyEnum do
       filter(tail, fun)
     end
   end
+
+  @doc """
+  Splits the `enumerable` into two enumerables, leaving `count`
+  elements in the first one. If `count` is a negative number,
+  it starts counting from the back to the beginning of the
+  enumerable.
+
+  Be aware that a negative `count` implies the `enumerable`
+  will be enumerated twice: once to calculate the position, and
+  a second time to do the actual splitting.
+
+  ## Examples
+
+      iex> Lists.MyEnum.split([1, 2, 3], 2)
+      {[1, 2], [3]}
+
+      iex> Lists.MyEnum.split([1, 2, 3], 10)
+      {[1, 2, 3], []}
+
+      iex> Lists.MyEnum.split([1, 2, 3], 0)
+      {[], [1, 2, 3]}
+
+      iex> Lists.MyEnum.split([1, 2, 3], -1)
+      {[1, 2], [3]}
+
+      iex> Lists.MyEnum.split([1, 2, 3], -5)
+      {[], [1, 2, 3]}
+  """
+  def split([head | tail], count) when count > 0 do
+    {left, right} = split(tail, count - 1)
+    {[head | left], right}
+  end
+  def split(list, count) when count < 0 do
+    size = length list
+    new_count = if size + count >= 0, do: size + count, else: 0
+    split(list, new_count)
+  end
+  def split(list, _), do: {[], list}
 end
