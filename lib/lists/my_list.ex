@@ -78,4 +78,20 @@ defmodule Lists.MyList do
     [list | filter_by_first(tail, filter)]
   end
   def filter_by_first([_ | tail], filter), do: filter_by_first(tail, filter)
+
+  @doc """
+  List of prime numbers from 2 to n.
+  Simple iteration without exclusions, so poor perfomance.
+
+  ## Example
+      iex> Lists.MyList.primes(37)
+      [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37]
+  """
+  def primes(n) do
+    for x <- span(2, n), _prime?(x), do: x
+  end
+  defp _prime?(2), do: true
+  defp _prime?(x) do
+    !Enum.any?(2..(x - 1), fn(y) -> rem(x, y) == 0 end)
+  end
 end
