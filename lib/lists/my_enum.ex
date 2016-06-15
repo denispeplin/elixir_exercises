@@ -135,4 +135,16 @@ defmodule Lists.MyEnum do
     right
   end
   def take(_, _), do: []
+
+  @doc """
+  Flattens nested lists.
+
+  ## Example
+      iex> Lists.MyEnum.flatten([1, [2, 3, [4]], 5, [[[6]]]])
+      [1, 2, 3, 4, 5, 6]
+  """
+  def flatten(list, acc \\ [])
+  def flatten([], acc), do: acc
+  def flatten([head | tail], acc) when is_list(head), do: flatten(head, flatten(tail, acc))
+  def flatten([head | tail], acc), do: [head | flatten(tail, acc)]
 end
