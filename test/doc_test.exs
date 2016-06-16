@@ -6,4 +6,5 @@ defmodule DocTest do
   doctest ModulesAndFunctiions.EmbeddedFunctions
   doctest Lists.MyList
   doctest Lists.MyEnum
+  doctest Lists.Tax
 end
