@@ -7,4 +7,5 @@ defmodule DocTest do
   doctest Lists.MyList
   doctest Lists.MyEnum
   doctest Lists.Tax
+  doctest Strings.MyString
 end
