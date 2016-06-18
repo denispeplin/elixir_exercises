@@ -54,4 +54,16 @@ defmodule Strings.MyString do
     end
   end
   defp _to_integer(string), do: String.strip(string) |> String.to_integer
+
+  @doc """
+  Center strings on longest.
+
+  ## Example
+      iex> Strings.MyString.center(["cat", "zebra", "elephant"])
+      ["  cat", "zebra", "elephant"]
+  """
+  def center(list) do
+    longest = Enum.max_by list, fn(str) -> String.length(str) end
+    Enum.map list, fn(str) -> String.rjust(str, round(String.length(longest) / 2 + 1)) end
+  end
 end
