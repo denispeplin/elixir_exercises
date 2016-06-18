@@ -66,4 +66,15 @@ defmodule Strings.MyString do
     longest = Enum.max_by list, fn(str) -> String.length(str) end
     Enum.map list, fn(str) -> String.rjust(str, round(String.length(longest) / 2 + 1)) end
   end
+
+  @doc """
+  Capitalize sentences.
+
+  ## Example
+      iex> Strings.MyString.capitalize_sentences("each. new STRING. capitalized. ")
+      "Each. New string. Capitalized. "
+  """
+  def capitalize_sentences(string) do
+    Enum.map(String.split(string, ". "), &String.capitalize(&1)) |> Enum.join(". ")
+  end
 end
