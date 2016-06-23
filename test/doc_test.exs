@@ -8,4 +8,5 @@ defmodule DocTest do
   doctest Lists.MyEnum
   doctest Lists.Tax
   doctest Strings.MyString
+  doctest ControlFlow
 end
